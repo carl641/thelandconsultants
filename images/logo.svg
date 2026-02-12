@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="180"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="200" cy="200" r="190" fill="#1a3c34"/>
+
+  <!-- Inner ring -->
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#c8a45a" stroke-width="2"/>
+
+  <!-- Inner green circle -->
+  <circle cx="200" cy="200" r="170" fill="#1a3c34"/>
+
+  <!-- Text path for curved "THE LAND CONSULTANTS" at top -->
+  <defs>
+    <path id="topArc" d="M 60,200 a 140,140 0 0,1 280,0" fill="none"/>
+    <path id="bottomArc" d="M 70,200 a 130,130 0 0,0 260,0" fill="none"/>
+  </defs>
+
+  <text fill="#c8a45a" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="bold" letter-spacing="6">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">THE LAND CONSULTANTS</textPath>
+  </text>
+
+  <!-- Tree trunk -->
+  <g fill="#f7f5f0">
+    <!-- Main trunk -->
+    <rect x="192" y="230" width="16" height="70" rx="2"/>
+    <!-- Trunk base / roots -->
+    <path d="M185,290 Q192,280 192,300 L208,300 Q208,280 215,290 L210,300 L190,300 Z" opacity="0.8"/>
+    <!-- Root flares -->
+    <path d="M178,298 Q185,288 192,300 L192,300 L178,302 Z" opacity="0.6"/>
+    <path d="M222,298 Q215,288 208,300 L208,300 L222,302 Z" opacity="0.6"/>
+  </g>
+
+  <!-- Tree canopy -->
+  <g fill="#f7f5f0">
+    <!-- Main canopy mass - large oak/deciduous tree shape -->
+    <ellipse cx="200" cy="180" rx="70" ry="55"/>
+    <!-- Top crown -->
+    <ellipse cx="200" cy="140" rx="40" ry="35"/>
+    <!-- Left crown bulge -->
+    <ellipse cx="155" cy="175" rx="35" ry="30"/>
+    <!-- Right crown bulge -->
+    <ellipse cx="245" cy="175" rx="35" ry="30"/>
+    <!-- Upper left -->
+    <ellipse cx="170" cy="155" rx="30" ry="28"/>
+    <!-- Upper right -->
+    <ellipse cx="230" cy="155" rx="30" ry="28"/>
+    <!-- Bottom fill -->
+    <ellipse cx="200" cy="210" rx="55" ry="25"/>
+    <!-- Left lower -->
+    <ellipse cx="160" cy="200" rx="25" ry="20"/>
+    <!-- Right lower -->
+    <ellipse cx="240" cy="200" rx="25" ry="20"/>
+  </g>
+
+  <!-- Ground line -->
+  <line x1="140" y1="300" x2="260" y2="300" stroke="#c8a45a" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Bottom text: website -->
+  <text fill="#c8a45a" font-family="Georgia, 'Times New Roman', serif" font-size="14" letter-spacing="2">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">www.thelandconsultants.com</textPath>
+  </text>
+
+  <!-- Outer decorative ring -->
+  <circle cx="200" cy="200" r="190" fill="none" stroke="#c8a45a" stroke-width="1.5"/>
+</svg>
