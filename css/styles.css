@@ -1494,6 +1494,221 @@ p {
   margin-bottom: 0;
 }
 
+/* ---------- Location Page: Trust Badges ---------- */
+.location-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-light-gray);
+}
+
+.location-trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.location-trust-badge__icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(200,164,90,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Location Page: Service Card Icons ---------- */
+.location-service-card__icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+  font-size: 1.3rem;
+}
+
+.location-service-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.location-service-card a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(26,60,52,0.3);
+  text-underline-offset: 2px;
+  transition: all var(--transition);
+}
+
+.location-service-card a:hover {
+  color: var(--color-accent-dark);
+  text-decoration-color: var(--color-accent-dark);
+}
+
+/* ---------- Location Page: Content Block ---------- */
+.location-content-block {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.location-content-block p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.location-content-block a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(26,60,52,0.3);
+  text-underline-offset: 2px;
+  transition: all var(--transition);
+}
+
+.location-content-block a:hover {
+  color: var(--color-accent-dark);
+  text-decoration-color: var(--color-accent-dark);
+}
+
+/* ---------- Location Page: Why Choose Us ---------- */
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.why-choose-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-light-gray);
+  transition: all var(--transition);
+}
+
+.why-choose-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.why-choose-item__icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.why-choose-item h4 {
+  margin-bottom: 0.4rem;
+}
+
+.why-choose-item p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* ---------- Location Page: Areas Served ---------- */
+.areas-served-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.areas-served-column h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.areas-served-column ul {
+  list-style: none;
+}
+
+.areas-served-column ul li {
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.areas-served-column ul li i {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+}
+
+/* ---------- Location Page: Sticky Mobile CTA ---------- */
+.mobile-sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--color-primary-dark);
+  padding: 0.6rem 0.75rem;
+  gap: 0.6rem;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.2);
+}
+
+.mobile-sticky-cta__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.mobile-sticky-cta__btn--call {
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+
+.mobile-sticky-cta__btn--quote {
+  background: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .hero .container {
@@ -1524,6 +1739,14 @@ p {
 
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .areas-served-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -1623,6 +1846,27 @@ p {
 
   .hero__buttons .btn {
     justify-content: center;
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .areas-served-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-trust-badges {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mobile-sticky-cta {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 70px;
   }
 }
 
