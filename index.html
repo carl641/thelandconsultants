@@ -152,6 +152,7 @@
   <section class="hero">
     <div class="hero__overlay"></div>
     <div class="hero__pattern"></div>
+    <canvas id="hero-topo" class="hero__canvas"></canvas>
     <div class="container">
       <div class="hero__content">
         <div class="hero__badge"><i class="fas fa-star" aria-hidden="true"></i> Licensed &amp; Multi-State Certified</div>
@@ -507,6 +508,156 @@
         });
       });
     });
+  </script>
+
+  <!-- Hero topographic background animation -->
+  <script>
+  (function() {
+    var canvas = document.getElementById('hero-topo');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var hero = canvas.closest('.hero');
+    var W, H, time = 0, animId;
+
+    // Perlin noise generator
+    function PerlinNoise(seed) {
+      this.perm = new Uint8Array(512);
+      var p = new Uint8Array(256);
+      var i, s = seed | 0, j;
+      for (i = 0; i < 256; i++) p[i] = i;
+      for (i = 255; i > 0; i--) {
+        s = (s * 16807) % 2147483647;
+        j = s % (i + 1);
+        var tmp = p[i]; p[i] = p[j]; p[j] = tmp;
+      }
+      for (i = 0; i < 512; i++) this.perm[i] = p[i & 255];
+    }
+    PerlinNoise.prototype.fade = function(t) { return t * t * t * (t * (t * 6 - 15) + 10); };
+    PerlinNoise.prototype.lerp = function(a, b, t) { return a + t * (b - a); };
+    PerlinNoise.prototype.grad = function(hash, x, y) {
+      var h = hash & 3, u = h < 2 ? x : y, v = h < 2 ? y : x;
+      return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+    };
+    PerlinNoise.prototype.noise2D = function(x, y) {
+      var X = Math.floor(x) & 255, Y = Math.floor(y) & 255;
+      x -= Math.floor(x); y -= Math.floor(y);
+      var u = this.fade(x), v = this.fade(y), p = this.perm;
+      var a = p[X] + Y, b = p[X + 1] + Y;
+      return this.lerp(
+        this.lerp(this.grad(p[a], x, y), this.grad(p[b], x - 1, y), u),
+        this.lerp(this.grad(p[a + 1], x, y - 1), this.grad(p[b + 1], x - 1, y - 1), u), v
+      );
+    };
+    PerlinNoise.prototype.fbm = function(x, y, oct) {
+      var val = 0, amp = 0.5, freq = 1;
+      for (var i = 0; i < oct; i++) {
+        val += amp * this.noise2D(x * freq, y * freq);
+        amp *= 0.5; freq *= 2;
+      }
+      return val;
+    };
+
+    var noise1 = new PerlinNoise(42);
+    var noise2 = new PerlinNoise(137);
+    var noise3 = new PerlinNoise(2023);
+
+    // Simplified layers using site colors
+    var layers = [
+      { scale: 0.0018, contours: 10, noiseGen: noise1, color: [42, 92, 78], speed: 0.03, lineWidth: 0.5 },
+      { scale: 0.0025, contours: 8,  noiseGen: noise2, color: [140, 180, 140], speed: 0.05, lineWidth: 0.7 },
+      { scale: 0.004,  contours: 6,  noiseGen: noise3, color: [200, 164, 90], speed: 0.07, lineWidth: 0.8 }
+    ];
+
+    var STEP = 8;
+
+    function resize() {
+      var rect = hero.getBoundingClientRect();
+      W = canvas.width = Math.ceil(rect.width);
+      H = canvas.height = Math.ceil(rect.height);
+    }
+
+    function getContourSegments(field, w, h, threshold) {
+      var segs = [];
+      for (var y = 0; y < h - 1; y++) {
+        for (var x = 0; x < w - 1; x++) {
+          var tl = field[y * w + x], tr = field[y * w + x + 1];
+          var br = field[(y + 1) * w + x + 1], bl = field[(y + 1) * w + x];
+          var cfg = (tl >= threshold ? 8 : 0) | (tr >= threshold ? 4 : 0) |
+                    (br >= threshold ? 2 : 0) | (bl >= threshold ? 1 : 0);
+          if (cfg === 0 || cfg === 15) continue;
+          var interp = function(a, b) { return (threshold - a) / (b - a); };
+          var top = { x: x + interp(tl, tr), y: y };
+          var right = { x: x + 1, y: y + interp(tr, br) };
+          var bottom = { x: x + interp(bl, br), y: y + 1 };
+          var left = { x: x, y: y + interp(tl, bl) };
+          switch (cfg) {
+            case 1: case 14: segs.push(left, bottom); break;
+            case 2: case 13: segs.push(bottom, right); break;
+            case 3: case 12: segs.push(left, right); break;
+            case 4: case 11: segs.push(top, right); break;
+            case 5: segs.push(left, top); segs.push(bottom, right); break;
+            case 6: case 9: segs.push(top, bottom); break;
+            case 7: case 8: segs.push(left, top); break;
+            case 10: segs.push(top, right); segs.push(left, bottom); break;
+          }
+        }
+      }
+      return segs;
+    }
+
+    function render() {
+      time += 0.002;
+      ctx.clearRect(0, 0, W, H);
+
+      var gw = Math.ceil(W / STEP) + 2;
+      var gh = Math.ceil(H / STEP) + 2;
+
+      for (var li = 0; li < layers.length; li++) {
+        var layer = layers[li];
+        var drift = time * layer.speed * 100;
+        var field = new Float32Array(gw * gh);
+
+        for (var gy = 0; gy < gh; gy++) {
+          for (var gx = 0; gx < gw; gx++) {
+            var wx = (gx * STEP + drift) * layer.scale;
+            var wy = (gy * STEP + drift * 0.3) * layer.scale;
+            field[gy * gw + gx] = layer.noiseGen.fbm(wx, wy, 4) + 0.5;
+          }
+        }
+
+        var r = layer.color[0], g = layer.color[1], b = layer.color[2];
+
+        for (var c = 0; c < layer.contours; c++) {
+          var t = (c + 1) / (layer.contours + 1);
+          var alpha = (0.08 + t * 0.18) * (0.3 + li * 0.15);
+          var segs = getContourSegments(field, gw, gh, t);
+
+          ctx.strokeStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = layer.lineWidth;
+          ctx.beginPath();
+          for (var i = 0; i < segs.length; i += 2) {
+            ctx.moveTo(segs[i].x * STEP, segs[i].y * STEP);
+            ctx.lineTo(segs[i + 1].x * STEP, segs[i + 1].y * STEP);
+          }
+          ctx.stroke();
+        }
+      }
+
+      animId = requestAnimationFrame(render);
+    }
+
+    // Only run when hero is visible
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        if (!animId) { resize(); animId = requestAnimationFrame(render); }
+      } else {
+        if (animId) { cancelAnimationFrame(animId); animId = null; }
+      }
+    }, { threshold: 0 });
+
+    window.addEventListener('resize', function() { if (animId) resize(); });
+    observer.observe(hero);
+  })();
   </script>
 
 </body>
