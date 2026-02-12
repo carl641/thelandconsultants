@@ -356,14 +356,15 @@ p {
   min-height: 85vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-light) 100%);
+  background: url('../images/topomap.png') center/cover no-repeat;
   overflow: hidden;
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(200,164,90,0.08)"/><stop offset="100%" style="stop-color:rgba(200,164,90,0)"/></linearGradient></defs><rect fill="url(%23g)" width="1440" height="900"/><circle cx="200" cy="600" r="300" fill="rgba(200,164,90,0.04)"/><circle cx="1200" cy="200" r="250" fill="rgba(200,164,90,0.03)"/></svg>') center/cover;
+  background: rgba(26, 60, 52, 0.75);
+  z-index: 0;
 }
 
 .hero__pattern {
