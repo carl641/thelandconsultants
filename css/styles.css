@@ -645,7 +645,7 @@ p {
   aspect-ratio: 4/3;
   object-fit: contain;
   border-radius: var(--radius-lg);
-  background: #f5f3ef;
+  background: #ffffff;
   display: block;
 }
 
