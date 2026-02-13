@@ -640,26 +640,13 @@ p {
   overflow: hidden;
 }
 
-.about-image__placeholder {
+.about-image__img {
   width: 100%;
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  object-fit: contain;
   border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-accent);
-  font-size: 3rem;
-  position: relative;
-}
-
-.about-image__placeholder::after {
-  content: 'Professional Land Surveying';
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.6);
-  margin-top: 1rem;
+  background: #f5f3ef;
+  display: block;
 }
 
 .about-image__badge {
