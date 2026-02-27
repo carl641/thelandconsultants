@@ -121,6 +121,26 @@
     </div>
   </section>
 
+  <!-- Services Quick Navigation -->
+  <nav class="services-nav" aria-label="Services Navigation">
+    <div class="container">
+      <div class="services-nav__dropdown">
+        <button class="services-nav__toggle" aria-expanded="false" aria-controls="services-nav-menu">
+          <span class="services-nav__label">Jump to a Service</span>
+          <i class="fas fa-chevron-down fa-sm" aria-hidden="true"></i>
+        </button>
+        <ul class="services-nav__menu" id="services-nav-menu">
+          <li><a href="#alta" class="services-nav__link">ALTA/NSPS Surveys</a></li>
+          <li><a href="#boundary" class="services-nav__link">Boundary Surveys</a></li>
+          <li><a href="#topographic" class="services-nav__link">Topographic Surveys</a></li>
+          <li><a href="#drone" class="services-nav__link">Drone/UAV Surveys</a></li>
+          <li><a href="#construction" class="services-nav__link">Construction Layout</a></li>
+          <li><a href="#consulting" class="services-nav__link">Land Consulting</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <!-- Services Detail -->
   <section class="section" id="alta">
     <div class="container">
@@ -314,6 +334,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Mobile nav dropdown toggle
       var dropdowns = document.querySelectorAll('.nav__item--dropdown');
       dropdowns.forEach(function(item) {
         item.addEventListener('click', function(e) {
@@ -323,6 +344,31 @@
           }
         });
       });
+
+      // Services quick-nav dropdown
+      var toggle = document.querySelector('.services-nav__toggle');
+      var menu = document.querySelector('.services-nav__menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          menu.classList.toggle('active');
+        });
+
+        menu.querySelectorAll('.services-nav__link').forEach(function(link) {
+          link.addEventListener('click', function() {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('active');
+          });
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.services-nav__dropdown')) {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('active');
+          }
+        });
+      }
     });
   </script>
 
