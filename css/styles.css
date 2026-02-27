@@ -1029,6 +1029,84 @@ p {
   color: rgba(255,255,255,0.3);
 }
 
+/* ---------- Services Quick Navigation Dropdown ---------- */
+.services-nav {
+  background: var(--color-off-white);
+  border-bottom: 1px solid var(--color-light-gray);
+  padding: 1rem 0;
+}
+
+.services-nav__dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.services-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-light-gray);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: all var(--transition);
+}
+
+.services-nav__toggle:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.services-nav__toggle[aria-expanded="true"] {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.services-nav__toggle[aria-expanded="true"] .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+.services-nav__toggle .fa-chevron-down {
+  transition: transform var(--transition);
+}
+
+.services-nav__menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  min-width: 240px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem 0;
+  list-style: none;
+  z-index: 50;
+}
+
+.services-nav__menu.active {
+  display: block;
+}
+
+.services-nav__link {
+  display: block;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  transition: all var(--transition);
+}
+
+.services-nav__link:hover {
+  background: var(--color-off-white);
+  color: var(--color-primary);
+  padding-left: 1.5rem;
+}
+
 /* ---------- Services Detail Page ---------- */
 .service-detail {
   display: grid;
