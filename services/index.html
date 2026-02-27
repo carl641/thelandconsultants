@@ -79,7 +79,17 @@
         </button>
         <ul class="nav__list">
           <li><a href="/" class="nav__link">Home</a></li>
-          <li><a href="/services" class="nav__link nav__link--active">Services</a></li>
+          <li class="nav__item--dropdown">
+            <a href="/services" class="nav__link nav__link--active">Services <i class="fas fa-chevron-down fa-xs" aria-hidden="true"></i></a>
+            <ul class="dropdown">
+              <li><a href="/services/alta-surveys" class="dropdown__link">ALTA/NSPS Surveys</a></li>
+              <li><a href="/services/boundary-surveys" class="dropdown__link">Boundary Surveys</a></li>
+              <li><a href="/services/topographic-surveys" class="dropdown__link">Topographic Surveys</a></li>
+              <li><a href="/services/drone-uav-surveys" class="dropdown__link">Drone/UAV Surveys</a></li>
+              <li><a href="/services/construction-layout" class="dropdown__link">Construction Layout</a></li>
+              <li><a href="/services/land-consulting" class="dropdown__link">Land Consulting</a></li>
+            </ul>
+          </li>
           <li><a href="/about" class="nav__link">About</a></li>
           <li class="nav__item--dropdown">
             <a href="#" class="nav__link">Locations <i class="fas fa-chevron-down fa-xs" aria-hidden="true"></i></a>
