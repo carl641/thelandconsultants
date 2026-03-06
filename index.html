@@ -403,6 +403,116 @@
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="overline">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Answers to the questions we hear most often about land surveying, our process, and what to expect when working with us.</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do I need a survey before buying or selling land?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              In most cases, yes — especially for vacant land, acreage, or any property with unclear boundary lines. A current boundary survey protects both buyer and seller by confirming exactly what is being conveyed. Lenders and title companies often require an ALTA/NSPS Survey for commercial transactions as well.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What's the difference between a Boundary Survey and an ALTA Survey?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              A Boundary Survey establishes and marks the corners and lines of your property. An ALTA/NSPS Survey goes further — it follows a strict national standard and shows easements, rights-of-way, encroachments, utilities, and other matters of record that could affect a commercial transaction. ALTA surveys are typically required by lenders and title companies when financing commercial real estate.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How long does a survey take?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              Turnaround depends on property size, complexity, and existing record availability. A typical residential boundary survey may take 1–2 weeks from engagement to final deliverable. Larger tracts, ALTA surveys, or projects with limited historical records may take 3–6 weeks. We'll give you a realistic timeline during our free consultation.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What states do you survey in?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              We are licensed in 7 states and actively serve Tennessee, Georgia, Alabama, Mississippi, Kentucky, North Carolina, and Florida. Our main office is in Jasper, TN with additional coverage in Chattanooga, TN; Ringgold, GA; Huntsville, AL; and Madison, AL. Contact us if you're unsure whether we cover your area.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is a Drone/UAV survey and when do I need one?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              A Drone/UAV survey uses FAA-licensed pilots and LiDAR or photogrammetry equipment to collect high-resolution aerial data over your property. It's ideal for large or hard-to-access tracts, topographic mapping, construction site monitoring, and creating detailed 3D models. Drone surveys are often faster and more cost-effective than traditional ground-based methods for larger areas.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How much does a land survey cost?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              Survey costs vary based on property size, terrain, location, and type of survey required. Factors like access difficulty, amount of deed research needed, and existing monuments on the ground all affect pricing. The best way to get an accurate number is to request a free quote — we'll review your project and provide a clear, itemized estimate with no obligation.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can you help with a boundary dispute with a neighbor?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              Yes. We have extensive experience with disputed boundary lines. Our team performs thorough deed research and field work to establish the legally correct boundary. As Licensed Professional Surveyors and Real Estate Brokers, we understand the legal framework and can produce survey plats that hold up in court if necessary.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What should I have ready before contacting you?</span>
+            <div class="faq-icon"><i class="fas fa-chevron-down" aria-hidden="true"></i></div>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer__inner">
+              Having your property's parcel number (PIN) or tax map reference handy is helpful, along with any existing deeds, plats, or title documents you may have. A general description of what you're trying to accomplish (buy/sell, build, divide, resolve a dispute) helps us recommend the right type of survey. Don't worry if you don't have everything — we can guide you through the process.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta">
     <div class="container">
@@ -486,6 +596,26 @@
           if (window.innerWidth <= 768) {
             e.preventDefault();
             this.classList.toggle('active');
+          }
+        });
+      });
+
+      // FAQ accordion
+      var faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(function(item) {
+        var btn = item.querySelector('.faq-question');
+        var answer = item.querySelector('.faq-answer');
+        btn.addEventListener('click', function() {
+          var isOpen = item.classList.contains('open');
+          faqItems.forEach(function(i) {
+            i.classList.remove('open');
+            i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            i.querySelector('.faq-answer').style.maxHeight = null;
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
           }
         });
       });
