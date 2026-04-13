@@ -62,7 +62,7 @@
 
   <!-- Bottom text: website -->
   <text fill="#c8a45a" font-family="Georgia, 'Times New Roman', serif" font-size="14" letter-spacing="2">
-    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">www.thelandconsultants.com</textPath>
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">thelandconsultants.com</textPath>
   </text>
 
   <!-- Outer decorative ring -->
