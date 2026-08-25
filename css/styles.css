@@ -1008,6 +1008,22 @@ p {
   margin: 0 auto;
 }
 
+.page-header__areas {
+  color: var(--color-white);
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 640px;
+  margin: -0.35rem auto 1.1rem;
+}
+
+.page-header__areas span {
+  display: block;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
 .breadcrumb {
   display: flex;
   justify-content: center;
