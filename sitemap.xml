@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://thelandconsultants.com/blog/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -99,6 +99,12 @@
   <url>
     <loc>https://thelandconsultants.com/blog/alta-nsps-2026-standards-tri-state-developers/</loc>
     <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thelandconsultants.com/blog/land-surveying-huntsville-al-property-projects/</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
