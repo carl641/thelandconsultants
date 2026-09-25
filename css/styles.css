@@ -742,6 +742,10 @@ p {
   font-size: 0.9rem;
 }
 
+.process-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 /* ---------- Testimonials ---------- */
 .testimonials-grid {
   display: grid;
@@ -1363,8 +1367,13 @@ p {
   transform: translateY(-2px);
 }
 
+.location-service-card h3,
 .location-service-card h4 {
   margin-bottom: 0.5rem;
+}
+
+.location-service-card h3 {
+  font-size: 1.15rem;
 }
 
 .location-service-card p {
@@ -1890,6 +1899,12 @@ p {
 
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-grid--3 {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin: 0 auto;
   }
 
   .why-choose-grid {
