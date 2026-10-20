@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://thelandconsultants.com/blog/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -117,6 +117,12 @@
   <url>
     <loc>https://thelandconsultants.com/blog/huntsville-property-surveys-fences-flood-zones/</loc>
     <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thelandconsultants.com/blog/huntsville-land-surveys-history-property-lines/</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
