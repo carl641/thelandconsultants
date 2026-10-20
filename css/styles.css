@@ -1152,6 +1152,7 @@ p {
   direction: ltr;
 }
 
+.service-detail__content h2,
 .service-detail__content h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
